@@ -22,16 +22,24 @@ try:
             # we need some special handling here to correctly print unicode characters to standard output
             if str is bytes: # this version of Python uses bytes for strings (Python 2)
                 print("You said {}".format(value).encode("utf-8"))
+                #Google Websit
                 if ("chrome" in value or "Chrome" in value or "Google" in value or "google" in value ):
                     webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com")
-                    print "goes here"
+                #Apple Websit
                 elif ("apple" in value or "Apple" in value):
                     webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://apple.com")
+                #yahoo websit
                 elif ("yahoo" in value or "Yahoo"in value) :
                     webbrowser.open("http://yahoo.com")
+                #NotePad
                 elif (("word" in value) or ("text" in value)):
                     subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Notes.app"])
-                    print "Goes here"
+                #Apple texting
+                elif(("message" in value) or ("text message" in value)):
+                     subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Messages.app"])
+                #Steam
+                elif("Steam" in value):
+                     subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Steam.app"])
             else: # this version of Python uses unicode for strings (Python 3+)
                 print("You said {}".format(value))
         except sr.UnknownValueError:
