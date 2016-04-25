@@ -27,11 +27,13 @@ try:
                     print "goes here"
                 elif ("apple" in value or "Apple" in value):
                     webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://apple.com")
-                elif ("yahoo" in value or "Yahoo"in value) :
+                elif ("yahoo" in value or "Yahoo" in value) :
                     webbrowser.open("http://yahoo.com")
                 elif (("word" in value) or ("text" in value)):
                     subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Notes.app"])
                     print "Goes here"
+                elif (("LOL" in value) or ("League" in value) or ("League of Legends" in value)):
+                    subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/League of Legends.app"])
             else: # this version of Python uses unicode for strings (Python 3+)
                 print("You said {}".format(value))
         except sr.UnknownValueError:
