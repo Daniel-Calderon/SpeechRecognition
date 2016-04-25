@@ -1,5 +1,3 @@
-# Names: Daniel Calderon, Terra Fenton, Nancy Gomez
-
 import speech_recognition as sr
 #import a
 import webbrowser
