@@ -3,7 +3,8 @@
 import speech_recognition as sr
 #import a
 import webbrowser
-
+import os
+import subprocess
 r = sr.Recognizer()
 m = sr.Microphone()
 
@@ -21,12 +22,16 @@ try:
             # we need some special handling here to correctly print unicode characters to standard output
             if str is bytes: # this version of Python uses bytes for strings (Python 2)
                 print("You said {}".format(value).encode("utf-8"))
-                if "chrome" or "Chrome" or "Google" or "google" in value:
+                if ("chrome" in value or "Chrome" in value or "Google" in value or "google" in value ):
                     webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com")
-                elif value == "go to apple.com":
+                    print "goes here"
+                elif ("apple" in value or "Apple" in value):
                     webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://apple.com")
-                elif value == "go to yahoo.com":
+                elif ("yahoo" in value or "Yahoo"in value) :
                     webbrowser.open("http://yahoo.com")
+                elif (("word" in value) or ("text" in value)):
+                    subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Notes.app"])
+                    print "Goes here"
             else: # this version of Python uses unicode for strings (Python 3+)
                 print("You said {}".format(value))
         except sr.UnknownValueError:
