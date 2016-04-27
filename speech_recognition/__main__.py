@@ -5,6 +5,8 @@ import speech_recognition as sr
 import webbrowser
 import os
 import subprocess
+from docx import Document
+from docx.shared import Inches
 r = sr.Recognizer()
 m = sr.Microphone()
 
@@ -33,7 +35,9 @@ try:
                     webbrowser.open("http://yahoo.com")
                 #NotePad
                 elif (("word" in value) or ("text" in value)):
-                    subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Notes.app"])
+                    subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Microsoft Word.app"])
+                    #subprocess.kill(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Microsoft\Word.app"])
+                    
                 #Apple texting
                 elif(("message" in value) or ("text message" in value)):
                     subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Messages.app"])
