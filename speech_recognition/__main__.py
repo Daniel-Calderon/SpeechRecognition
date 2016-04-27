@@ -39,7 +39,7 @@ try:
                     subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Messages.app"])
                 #Steam
                 elif("Steam" in value):
-                     subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Steam.app"])
+                    subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Steam.app"])
                     print "Goes here"
                 elif (("LOL" in value) or ("League" in value) or ("League of Legends" in value)):
                     subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/League of Legends.app"])
