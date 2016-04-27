@@ -1,7 +1,7 @@
 # Names: Daniel Calderon, Terra Fenton, Nancy Gomez
 
 import speech_recognition as sr
-#import a
+import sys
 import webbrowser
 import os
 import subprocess
@@ -27,24 +27,44 @@ try:
                     webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com")
                 #Apple Websit
                 elif ("apple" in value or "Apple" in value):
-                    webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://apple.com")
-
+                        webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://apple.com")
+                #Yahoo
                 elif ("yahoo" in value or "Yahoo" in value) :
                     webbrowser.open("http://yahoo.com")
+                #Disney Store
+                elif ("Disney store" in value or "Disney" in value) :
+                    webbrowser.open("http://www.disneystore.com")
                 #NotePad
                 elif (("word" in value) or ("text" in value)):
-                    subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Notes.app"])
+                        subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Notes.app"])
                 #Apple texting
                 elif(("message" in value) or ("text message" in value)):
                     subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Messages.app"])
                 #Steam
-                elif("Steam" in value):
+                elif(("Steam" in value) or ("steam" in value)):
                     subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Steam.app"])
-                    print "Goes here"
+                #League of Legends
                 elif (("LOL" in value) or ("League" in value) or ("League of Legends" in value)):
                     subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/League of Legends.app"])
-            else: # this version of Python uses unicode for strings (Python 3+)
-                print("You said {}".format(value))
+                #Photo Both
+                elif(("Booth" in value) or ("booth" in value)):
+                    subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Photo Booth.app"])
+                #Pictures
+                elif(("Photo" in value) or ("photo" in value) or ("picture" in value)):
+                    subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Photos.app "])
+                #Skype
+                elif(("Skype" in value) or ("skype" in value)):
+                    subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Skype.app"])
+                #iTunes
+                elif(("eye Tunes" in value) or ("iTunes" in value) or ("Tunes" in value)):
+                    subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/iTunes.app"])
+                #Calculator
+                elif(("calculator" in value)):
+                    subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Calculator.app"])
+                #Close Code
+                elif(("close" in value) or ("Lowe's" in value)):
+                    raise SystemExit
+
         except sr.UnknownValueError:
             print("Oops! Didn't catch that")
         except sr.RequestError as e:
