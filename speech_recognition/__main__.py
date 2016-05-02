@@ -34,7 +34,7 @@ try:
                 if ("chrome" in value or "Chrome" in value):
                     webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com")
                 if ("Google" in value or "Google search" in value or "google" in value):
-                    webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com/#q=" + value)
+                    webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com/webhp?hl=en#hl=en&q=" + format(value).encode("utf-8"))
                 #Apple Website
                 elif ("apple" in value or "Apple" in value):
                         webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://apple.com")
@@ -59,7 +59,6 @@ try:
                                 print("Didnt catch that")
                         else:
                             document.add_paragraph(value)
-                            with m as source
                             document.save(value + ".docx")
                         print("******************************")
                         print("Enter name of file")
