@@ -56,10 +56,11 @@ try:
                             try:
                                 value = r.recognize_google(audio)
                             except sr.UnknownValueError:
-                                print("Didnt cathc that")
+                                print("Didnt catch that")
                         else:
                             document.add_paragraph(value)
-                            document.save("demo.docx")
+                            with m as source
+                            document.save(value+".docx")
                             
                     except sr.UnknownValueError:
                             print("Oops! Didn't catch that")
