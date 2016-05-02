@@ -35,7 +35,6 @@ try:
                     webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com")
                 if ("Google" in value or "Google search" in value or "google" in value):
                     webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com/#q=" + value)
-
                 #Apple Website
                 elif ("apple" in value or "Apple" in value):
                         webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://apple.com")
@@ -62,7 +61,19 @@ try:
                             document.add_paragraph(value)
                             with m as source
                             document.save(value + ".docx")
+                        print("******************************")
+                        print("Enter name of file")
+                        print("******************************")
+                        with m as source: audio = r.listen(source)
+                        try:
+                            value = r.recognize_google(audio)
+                            print ("Path is "+ value+".docx")
                             
+                            path = format(value).encode("utf-8")+".docx"
+                            document.save(path)
+                            open(path)
+                        except sr.UnknownValueError:
+                            print("Didnt catch that")
                     except sr.UnknownValueError:
                             print("Oops! Didn't catch that")
                 #Apple texting
