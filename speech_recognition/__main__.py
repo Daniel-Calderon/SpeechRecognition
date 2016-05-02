@@ -45,8 +45,23 @@ try:
                     webbrowser.open("http://www.disneystore.com")
                 #NotePad
                 elif (("word" in value) or ("text" in value)):
-                    subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Microsoft Word.app"])
-                    #subprocess.kill(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Microsoft\Word.app"])
+                    document = Document()
+                    print("say whatever you need to say(if you wish to start please say START AGAIN PYTHON")
+                    with m as source: audio = r.listen(source)
+                    try:
+                        value = r.recognize_google(audio)
+                        if("Start again python" in value or "start again pythin" in value):
+                            with m as source: audio = r.listen(source)
+                            try:
+                                value = r.recognize_google(audio)
+                            except sr.UnknownValueError:
+                                print("Didnt cathc that")
+                        else:
+                            document.add_paragraph(value)
+                            document.save("demo.docx")
+                            
+                    except sr.UnknownValueError:
+                            print("Oops! Didn't catch that")
                 #Apple texting
                 elif(("message" in value) or ("text message" in value)):
                     subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Messages.app"])
