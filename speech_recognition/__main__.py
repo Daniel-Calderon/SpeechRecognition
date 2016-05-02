@@ -34,6 +34,7 @@ try:
                 #Google Website
                 if ("chrome" in value or "Chrome" in value or "Google" in value or "google" in value ):
                     webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com")
+                if ("Google" in value or "Google search" in value)
                 #Apple Website
                 elif ("apple" in value or "Apple" in value):
                         webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://apple.com")
