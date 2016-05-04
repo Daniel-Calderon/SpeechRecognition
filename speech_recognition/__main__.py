@@ -34,6 +34,7 @@ try:
                 if ("chrome" in value or "Chrome" in value):
                     webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com")
                 #Google Search
+                #Google anything
                 if ("Google" in value or "Google search" in value or "google" in value):
                     webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com/webhp?hl=en#hl=en&q=" + format(value).encode("utf-8"))
                 #Apple Website
@@ -103,6 +104,9 @@ try:
                 #Close Code
                 elif(("close" in value) or ("exit" in value)):
                     raise SystemExit
+                #League
+                elif (("LOL" in value) or ("League" in value) or ("League of Legends" in value)):
+                    subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/League of Legends.app"])
        
         # if the value (sound) wasn't recognizable, print an error message
         except sr.UnknownValueError:
