@@ -28,16 +28,14 @@ try:
         try:
             # recognize speech using Google Speech Recognition
             value = r.recognize_google(audio)
-            
-            # we need some special handling here to correctly print unicode characters to standard output
             if str is bytes: # this version of Python uses bytes for strings (Python 2)
                 print("You said {}".format(value).encode("utf-8"))
                 #Google Website
                 if ("chrome" in value or "Chrome" in value):
                     webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com")
                 #Google anything
-                if ("Google" in value or "Google Search" in value):
-                	 webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com/#q=" + value)
+                if ("Google" in value or "Google search" in value or "google" in value):
+                    webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com/webhp?hl=en#hl=en&q=" + format(value).encode("utf-8"))
                 #Apple Website
                 elif ("apple" in value or "Apple" in value):
                         webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://apple.com")
@@ -62,8 +60,20 @@ try:
                                 print("Didnt catch that")
                         else:
                             document.add_paragraph(value)
-                            document.save("demo.docx")
+                            document.save(value + ".docx")
+                        print("******************************")
+                        print("Enter name of file")
+                        print("******************************")
+                        with m as source: audio = r.listen(source)
+                        try:
+                            value = r.recognize_google(audio)
+                            print ("Path is "+ value+".docx")
                             
+                            path = format(value).encode("utf-8")+".docx"
+                            document.save(path)
+                            open(path)
+                        except sr.UnknownValueError:
+                            print("Didnt catch that")
                     except sr.UnknownValueError:
                             print("Oops! Didn't catch that")
                 #Apple texting
