@@ -7,11 +7,12 @@ import os
 import subprocess
 from docx import Document
 from docx.shared import Inches
+import time
 r = sr.Recognizer()
 
 # The microphone will be the source of our audio
 m = sr.Microphone()
-
+os.system("say Welcome to speech Recognion")
 try:
     print("A moment of silence, please...")
     # sets the threshold to a good value automatically.
@@ -22,18 +23,25 @@ try:
     print("Set minimum energy threshold to {}".format(r.energy_threshold))
     
     while True:
-        print("Say something!")
+        os.system("say Please say something")
+        time.sleep(0.3)
         with m as source: audio = r.listen(source)
-        print("Got it! Now to recognize it...")
+        os.system("say Understood. One second while i interpretd it")
+        time.sleep(.5)
         try:
             # recognize speech using Google Speech Recognition
             value = r.recognize_google(audio)
             if str is bytes: # this version of Python uses bytes for strings (Python 2)
-                print("You said {}".format(value).encode("utf-8"))
+                os.system("say You said{}".format(value).encode("utf-8"))
                 #Google Website
                 if ("chrome" in value or "Chrome" in value):
                     webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com")
                 if ("Google" in value or "Google search" in value or "google" in value):
+                    value = format(value).encode("utf-8").replace("Google", "")
+                    value =format(value).encode("utf-8").replace("search", "")
+                    value =format(value).encode("utf-8").replace("google", "")
+                    print("***************")
+                    print value
                     webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com/webhp?hl=en#hl=en&q=" + format(value).encode("utf-8"))
                 #Apple Website
                 elif ("apple" in value or "Apple" in value):
@@ -103,6 +111,10 @@ try:
                 #League
                 elif (("LOL" in value) or ("League" in value) or ("League of Legends" in value)):
                     subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/League of Legends.app"])
+                else:
+                    os.system("say Could not find a command")
+                    time.sleep(.4)
+    
        
         # if the value (sound) wasn't recognizable, print an error message
         except sr.UnknownValueError:
