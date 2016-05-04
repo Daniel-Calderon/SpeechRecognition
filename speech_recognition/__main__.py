@@ -30,9 +30,10 @@ try:
             value = r.recognize_google(audio)
             if str is bytes: # this version of Python uses bytes for strings (Python 2)
                 print("You said {}".format(value).encode("utf-8"))
-                #Google Website
+                #Chrome Website
                 if ("chrome" in value or "Chrome" in value):
                     webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com")
+                #Google Search
                 if ("Google" in value or "Google search" in value or "google" in value):
                     webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com/webhp?hl=en#hl=en&q=" + format(value).encode("utf-8"))
                 #Apple Website
@@ -51,9 +52,9 @@ try:
                     with m as source: audio = r.listen(source)
                     try:
                         value = r.recognize_google(audio)
-                        if("Start again python" in value or "start again pythin" in value):
+                        if("Start again python" in value or "start again python" in value):
                             with m as source: audio = r.listen(source)
-                            try:
+                            try:
                                 value = r.recognize_google(audio)
                             except sr.UnknownValueError:
                                 print("Didnt catch that")
@@ -81,6 +82,9 @@ try:
                 #Steam
                 elif(("Steam" in value) or ("steam" in value)):
                     subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Steam.app"])
+                #League
+                elif (("LOL" in value) or ("League" in value) or ("League of Legends" in value)):
+                    subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/League of Legends.app"])
                 #Photo Both
                 elif(("Booth" in value) or ("booth" in value)):
                     subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Photo Booth.app"])
@@ -97,12 +101,8 @@ try:
                 elif(("calculator" in value)):
                     subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Calculator.app"])
                 #Close Code
-                elif(("close" in value) or ("Lowe's" in value)):
+                elif(("close" in value) or ("exit" in value)):
                     raise SystemExit
-                    print "Goes here"
-                #League
-                elif (("LOL" in value) or ("League" in value) or ("League of Legends" in value)):
-                    subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/League of Legends.app"])
        
         # if the value (sound) wasn't recognizable, print an error message
         except sr.UnknownValueError:
