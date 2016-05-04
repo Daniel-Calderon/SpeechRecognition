@@ -33,8 +33,11 @@ try:
             if str is bytes: # this version of Python uses bytes for strings (Python 2)
                 print("You said {}".format(value).encode("utf-8"))
                 #Google Website
-                if ("chrome" in value or "Chrome" in value or "Google" in value or "google" in value ):
+                if ("chrome" in value or "Chrome" in value):
                     webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com")
+                #Google anything
+                if ("Google" in value or "Google Search" in value):
+                	 webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com/#q=" + value)
                 #Apple Website
                 elif ("apple" in value or "Apple" in value):
                         webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://apple.com")
@@ -56,7 +59,7 @@ try:
                             try:
                                 value = r.recognize_google(audio)
                             except sr.UnknownValueError:
-                                print("Didnt cathc that")
+                                print("Didnt catch that")
                         else:
                             document.add_paragraph(value)
                             document.save("demo.docx")
@@ -85,9 +88,8 @@ try:
                 elif(("calculator" in value)):
                     subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Calculator.app"])
                 #Close Code
-                elif(("close" in value) or ("Lowe's" in value)):
+                elif(("close" in value) or ("exit" in value)):
                     raise SystemExit
-                    print "Goes here"
                 #League
                 elif (("LOL" in value) or ("League" in value) or ("League of Legends" in value)):
                     subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/League of Legends.app"])
