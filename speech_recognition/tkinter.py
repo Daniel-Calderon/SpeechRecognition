@@ -127,15 +127,15 @@ def listen():
 	window.destroy()
 
 # creates a window
-window = Tk();
+window = Tk()
 
 # Opens the image of a mic for the interface
-image = Image.open('Microphone-icon.png');
-image = ImageTk.PhotoImage(image);
+imag = Image.open('/Users/danielcalderon/Desktop/SpeechRecognition/speech_recognition/Microphone-icon.png')
+imag = ImageTk.PhotoImage(imag)
 
 # Places the button on the window, gives it a command, and adds the image
-B = Button(window, command = listen, image = image).pack();
+B = Button(window, command = listen, image = imag).pack()
 
 # Runs and opens the window
-window.mainloop();
+window.mainloop()
 
