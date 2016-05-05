@@ -17,17 +17,17 @@ try:
     print("A moment of silence, please...")
     # sets the threshold to a good value automatically.
     with m as source: r.adjust_for_ambient_noise(source)
-    
+
     # Sets the sensitivity of the recognizer depending on the noise level of the room
     # (so louder values means there is a louder room)
     print("Set minimum energy threshold to {}".format(r.energy_threshold))
-    
+
     while True:
         os.system("say Please say something")
         time.sleep(0.2)
         with m as source: audio = r.listen(source)
         os.system("say Understood. One second while i interpretd it")
-        time.sleep(.5)
+        time.sleep(.3)
         try:
             # recognize speech using Google Speech Recognition
             value = r.recognize_google(audio)
@@ -65,9 +65,9 @@ try:
                     value = r.recognize_google(audio)
                     if(("Start again python" in value) or ("start again python" in value)):
                         with m as source: audio = r.listen(source)
-                        try:
+                        try:
                             value = r.recognize_google(audio)
-                            print ("Hello")
+                            print value
                         except sr.UnknownValueError:
                             print("Didnt catch that")
                     else:
@@ -80,14 +80,14 @@ try:
                     try:
                         value = r.recognize_google(audio)
                         print ("Path is "+ value+".docx")
-                            
+
                         path = format(value).encode("utf-8")+".docx"
                         document.save(path)
                         open(path)
                     except sr.UnknownValueError:
                         print("Didnt catch that")
                 except sr.UnknownValueError:
-                        print("Oops! Didn't catch that")
+                    print("Oops! Didn't catch that")
             #Apple texting
             elif(("message" in value) or ("text message" in value)):
                 subprocess.call(["/usr/bin/open", "-W", "-n", "-a", "/Applications/Messages.app"])
@@ -121,15 +121,15 @@ try:
             else:
                 os.system("say Could not find a command")
                 time.sleep(.4)
-    
-       
+
+
     # if the value (sound) wasn't recognizable, print an error message
         except sr.UnknownValueError:
                     print("Oops! Didn't catch that")
     # if there is an error with the actual API, print an error message
         except sr.RequestError as e:
             print("Uh oh! Couldn't request results from Google Speech Recognition service; {0}".format(e))
-            
+
 # this exception takes care of ending the program when the user enters Ctrl + C, doesn't give an error
 except KeyboardInterrupt:
     pass
