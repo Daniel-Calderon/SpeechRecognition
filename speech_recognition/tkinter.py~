@@ -11,8 +11,8 @@ import sys
 import webbrowser
 import os
 import subprocess
-#from docx import Document
-#from docx.shared import Inches
+from docx import Document
+from docx.shared import Inches
 r = sr.Recognizer()
 
 # The microphone will be the source of our audio
@@ -20,9 +20,11 @@ m = sr.Microphone()
 
 # here is where all the listening code should go
 def listen():
-	'''
 	try:
-		print("A moment of silence, please...")
+		label = Label(text="A moment of silence please...")
+		label.pack()
+		'''
+		#print("A moment of silence, please...")
 		# sets the threshold to a good value automatically.
 		with m as source: r.adjust_for_ambient_noise(source)
 
@@ -124,13 +126,13 @@ def listen():
 	except KeyboardInterrupt:
 		pass
 	'''
-	window.destroy()
+#window.destroy()
 
 # creates a window
 window = Tk()
 
 # Opens the image of a mic for the interface
-imag = Image.open('Microphone-icon.png').resize((248,248))
+imag = Image.open('/Users/danielcalderon/Desktop/SpeechRecognition/speech_recognition/Microphone-icon.png').resize((248,248))
 imag = ImageTk.PhotoImage(imag)
 
 # Places the button on the window, gives it a command, and adds the image

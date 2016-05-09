@@ -6,23 +6,25 @@
 
 from Tkinter import *
 from PIL import Image, ImageTk
-#import speech_recognition as sr
+import speech_recognition as sr
 import sys
-#import webbrowser
-#import os
-#import subprocess
+import webbrowser
+import os
+import subprocess
 #from docx import Document
 #from docx.shared import Inches
-#r = sr.Recognizer()
+r = sr.Recognizer()
 
 # The microphone will be the source of our audio
-#m = sr.Microphone()
+m = sr.Microphone()
 
 # here is where all the listening code should go
 def listen():
-	'''
 	try:
-		print("A moment of silence, please...")
+		label = Label(text="A moment of silence please...")
+		label.pack()
+		'''
+		#print("A moment of silence, please...")
 		# sets the threshold to a good value automatically.
 		with m as source: r.adjust_for_ambient_noise(source)
 
