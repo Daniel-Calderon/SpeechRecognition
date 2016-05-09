@@ -130,7 +130,7 @@ def listen():
 window = Tk()
 
 # Opens the image of a mic for the interface
-imag = Image.open('/Users/danielcalderon/Desktop/SpeechRecognition/speech_recognition/Microphone-icon.png')
+imag = Image.open('/Users/danielcalderon/Desktop/SpeechRecognition/speech_recognition/Microphone-icon.png').resize((248,248))
 imag = ImageTk.PhotoImage(imag)
 
 # Places the button on the window, gives it a command, and adds the image
