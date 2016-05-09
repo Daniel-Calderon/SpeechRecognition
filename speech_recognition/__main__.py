@@ -38,9 +38,9 @@ try:
                 os.system("say You said{}".format(value).encode("utf-8"))
                 #Google Website
                 print("You said {}".format(value).encode("utf-8"))
-            #Chrome Website
+                #Chrome Website
             if ("chrome" in value or "Chrome" in value):
-                webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com")
+                    webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com")
             #Google Search
             #Google anything
             if ("Google" in value or "Google search" in value or "google" in value):
