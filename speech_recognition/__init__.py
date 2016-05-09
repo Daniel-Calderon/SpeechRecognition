@@ -5,12 +5,12 @@
 __author__ = "Anthony Zhang (Uberi)"
 __version__ = "3.4.3"
 __license__ = "BSD"
-
+import warnings
+warnings.simplefilter("ignore", UserWarning)
 import io, os, subprocess, wave, aifc, base64
 import math, audioop, collections, threading
 import platform, stat, random, uuid
 import json
-
 try: # attempt to use the Python 2 modules
     from urllib import urlencode
     from urllib2 import Request, urlopen, URLError, HTTPError

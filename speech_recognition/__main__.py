@@ -1,20 +1,23 @@
 # Names: Daniel Calderon, Terra Fenton, Nancy Gomez
-
+import warnings
+warnings.simplefilter("ignore", UserWarning)
 import speech_recognition as sr
+
 import sys
 import webbrowser
 import os
+import warnings
 import subprocess
 from docx import Document
 from docx.shared import Inches
 import time
 r = sr.Recognizer()
-
 # The microphone will be the source of our audio
 m = sr.Microphone()
 os.system("say Welcome to speech Recognion")
 try:
     print("A moment of silence, please...")
+    warnings.filterwarnings("ignore")
     # sets the threshold to a good value automatically.
     with m as source: r.adjust_for_ambient_noise(source)
 
@@ -36,43 +39,8 @@ try:
                 #Google Website
                 print("You said {}".format(value).encode("utf-8"))
                 #Chrome Website
-                if ("chrome" in value or "Chrome" in value):
-                    webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com")
-                #Google Search
-                #Google anything
-                if ("Google" in value or "Google search" in value or "google" in value):
-                    webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com/webhp?hl=en#hl=en&q=" + format(value).encode("utf-8"))
-                #Apple Website
-                elif ("apple" in value or "Apple" in value):
-                        webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://apple.com")
-				#Yahoo Website
-                elif ("yahoo" in value or "Yahoo" in value) :
-                    webbrowser.open("http://yahoo.com")
-                #Disney Store
-                elif ("Disney store" in value or "Disney" in value) :
-                    webbrowser.open("http://www.disneystore.com")
-                #NotePad
-                elif (("word" in value) or ("text" in value)):
-                    document = Document()
-                    print("say whatever you need to say(if you wish to start please say START AGAIN PYTHON")
-                    with m as source: audio = r.listen(source)
-                    try:
-                        value = r.recognize_google(audio)
-                        if("Start again python" in value or "start again python" in value):
-                            with m as source: audio = r.listen(source)
-                            try:
-                                value = r.recognize_google(audio)
-                            except sr.UnknownValueError:
-                                print("Didnt catch that")
-                        else:
-                            document.add_paragraph(value)
-                            document.save(value + ".docx")
-                        print("******************************")
-                        print("Enter name of file")
-                        print("******************************")
-            #Chrome Website
             if ("chrome" in value or "Chrome" in value):
-                webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com")
+                    webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com")
             #Google Search
             #Google anything
             if ("Google" in value or "Google search" in value or "google" in value):
