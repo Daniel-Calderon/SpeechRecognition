@@ -1,20 +1,23 @@
 # Names: Daniel Calderon, Terra Fenton, Nancy Gomez
-
+import warnings
+warnings.simplefilter("ignore", UserWarning)
 import speech_recognition as sr
+
 import sys
 import webbrowser
 import os
+import warnings
 import subprocess
 from docx import Document
 from docx.shared import Inches
 import time
 r = sr.Recognizer()
-
 # The microphone will be the source of our audio
 m = sr.Microphone()
 os.system("say Welcome to speech Recognion")
 try:
     print("A moment of silence, please...")
+    warnings.filterwarnings("ignore")
     # sets the threshold to a good value automatically.
     with m as source: r.adjust_for_ambient_noise(source)
 
