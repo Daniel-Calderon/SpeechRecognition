@@ -6,17 +6,17 @@
 
 from Tkinter import *
 from PIL import Image, ImageTk
-import speech_recognition as sr
+#import speech_recognition as sr
 import sys
-import webbrowser
-import os
-import subprocess
-from docx import Document
-from docx.shared import Inches
-r = sr.Recognizer()
+#import webbrowser
+#import os
+#import subprocess
+#from docx import Document
+#from docx.shared import Inches
+#r = sr.Recognizer()
 
 # The microphone will be the source of our audio
-m = sr.Microphone()
+#m = sr.Microphone()
 
 # here is where all the listening code should go
 def listen():
@@ -124,7 +124,7 @@ def listen():
 	except KeyboardInterrupt:
 		pass
 	'''
-	window.destroy()
+#window.destroy()
 
 # creates a window
 window = Tk();
