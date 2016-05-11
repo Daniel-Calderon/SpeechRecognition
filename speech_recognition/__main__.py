@@ -26,7 +26,7 @@ try:
     print("Set minimum energy threshold to {}".format(r.energy_threshold))
 
     while True:
-        os.system("say Please say something")
+        os.system("Please say something")
         time.sleep(0.2)
         with m as source: audio = r.listen(source)
         os.system("say Understood. One second while i interpretd it")
