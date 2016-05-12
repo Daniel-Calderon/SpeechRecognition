@@ -91,6 +91,7 @@ def listen():
                         document.save(value + ".docx")
                         print("******************************")
                         print("Enter name of file")
+                        os.system("say What is name of file?")
                         print("******************************")
                         with m as source: audio = r.listen(source)
                         try:
