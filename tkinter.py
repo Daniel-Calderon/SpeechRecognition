@@ -25,6 +25,7 @@ m = sr.Microphone()
 
 # here is where all the listening code should go
 def listen():
+
     try:
         os.system("say Adjusting noise levels")
 
@@ -149,6 +150,9 @@ def listen():
     # this exception takes care of ending the program when the user enters Ctrl + C, doesn't give an error
     except KeyboardInterrupt:
         pass
+
+
+#window.destroy()
 
 #***************************************************************************************************************
 
