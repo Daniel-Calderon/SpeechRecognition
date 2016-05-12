@@ -36,13 +36,11 @@ try:
             value = r.recognize_google(audio)
             if str is bytes: # this version of Python uses bytes for strings (Python 2)
                 os.system("say You said{}".format(value).encode("utf-8"))
-                #Google Website
                 print("You said {}".format(value).encode("utf-8"))
                 #Chrome Website
             if ("chrome" in value or "Chrome" in value):
                     webbrowser.get("open -a /Applications/Google\ Chrome.app %s").open("http://google.com")
             #Google Search
-            #Google anything
             if ("Google" in value or "Google search" in value or "google" in value):
                 value = format(value).encode("utf-8").replace("Google", "")
                 value =format(value).encode("utf-8").replace("search", "")
@@ -126,10 +124,10 @@ try:
                 time.sleep(.4)
 
 
-    # if the value (sound) wasn't recognizable, print an error message
+        # if the value (sound) wasn't recognizable, print an error message
         except sr.UnknownValueError:
                     print("Oops! Didn't catch that")
-    # if there is an error with the actual API, print an error message
+        # if there is an error with the actual API, print an error message
         except sr.RequestError as e:
             print("Uh oh! Couldn't request results from Google Speech Recognition service; {0}".format(e))
 
