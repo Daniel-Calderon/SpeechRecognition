@@ -26,10 +26,23 @@ def getVideo():
     videoName.focus_set()
     videoName.insert(0,"File name")
     def callback():
-        yt = YouTube(videoLink.get())
-        yt.set_filename(videoName.get())
-        video = yt.get(videoType.get(),videoQuality.get())
-        video.download(desktopPath)
+        try:
+            yt = YouTube(videoLink.get())
+            try:
+                yt.set_filename(videoName.get())
+            except:
+                os.system("say could not get file name")
+            try:
+                video = yt.get(videoType.get(),videoQuality.get())
+            except:
+                os.system("say Could not find proprt video quality")
+            try:
+                video.download(desktopPath)
+            except:
+                os.system("say Could not get donwload path")
+        except:
+            os.system("say Invaid link")
+
     end = Button(master,text="Enter(file will download to dekstop)",width =30,command = callback)
     end.pack()
     mainloop()
