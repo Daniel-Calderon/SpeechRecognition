@@ -1,8 +1,6 @@
 # Names: Daniel Calderon, Terra Fenton, Nancy Gomez
+#GITHUB LINK https://github.com/Daniel-Calderon/SpeechRecognition
 
-# look up what .config does for tk
-#if you want to pass in information:
-# command =  lambda: func(argument)
 
 
 from Tkinter import *
